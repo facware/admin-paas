@@ -18,7 +18,18 @@
                     <li><a class="page-scroll" href="#testimonials">Testimonials</a></li>
                     <li><a class="page-scroll" href="#pricing">Pricing</a></li>
                     <li><a class="page-scroll" href="#contact">Contact</a></li>
-                    <li><a class="" href="#">Sign In</a></li>
+                    <!--li><a class="" href="<%#= new_account_session_path %>">Sign In</a></li-->
+
+                    <% if account_signed_in? %>
+                      <!--lI>Logged in as <strong><%#= current_account.email %></strong></lI-->
+                      <!--li><%#= link_to 'Edit profile', edit_account_registration_path, :class => '' %></li-->
+                      <li><%= link_to "Panel", panel_path %></li>
+                      <li><%= link_to "Logout", destroy_account_session_path, method: :delete %></li>
+                    <% else %>
+                      <!--li><%#= link_to "Sign up", new_account_registration_path, :class => ''  %></li-->
+                      <li><%= link_to "Login", new_account_session_path, :class => ''  %></li>
+                    <% end %>
+
                 </ul>
             </div>
         </div>

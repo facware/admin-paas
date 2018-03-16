@@ -20,7 +20,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>FCAWARE</title>
+    <title>FACWARE</title>
 
     <!-- Main css styles -->
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -43,7 +43,14 @@
 
             <!-- Page wrapper -->
             <%= render 'layouts/topnavbar' %>
-
+            <!-- news -->
+            <% if notice %>
+              <p class="alert alert-success"><%= notice %></p>
+            <% end %>
+            <% if alert %>
+              <p class="alert alert-danger"><%= alert %></p>
+            <% end %>
+            
             <!-- Main view  -->
             <%= yield %>
 
