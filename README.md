@@ -24,6 +24,10 @@ Things you may want to cover:
 * ...
 # admin-paas
 
+rails generate scaffold Todos account:references name:string number:integer date:date datetime:datetime price:decimal float:float description:text hour:time special:timestamp
+
+rake db:rollback
+rails destroy scaffold
 
 #device
 Some setup you must do manually if you haven't yet:
@@ -50,3 +54,7 @@ Some setup you must do manually if you haven't yet:
   4. You can copy Devise views (for customization) to your app by running:
 
        rails g devise:views
+
+
+
+http://guides.rubyonrails.org/generators.html
