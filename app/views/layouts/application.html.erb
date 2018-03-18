@@ -30,7 +30,7 @@
     <%= csrf_meta_tags %>
 
 </head>
-<body>
+<body class="md-skin">
 
     <!-- Wrapper-->
     <div id="wrapper">
@@ -62,6 +62,10 @@
 
     </div>
     <!-- End wrapper-->
+    
+    <!-- Include javascript per-view -->
+    <!-- For demo purpose we include javascript in view but you can easily start SeedProject and organize it with Rails asset pipeline as you want -->
+    <%= yield :javascript %>
 
 </body>
 </html>
