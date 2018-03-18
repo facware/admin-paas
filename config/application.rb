@@ -24,7 +24,7 @@ module AdminPaas
 	   Devise::SessionsController.layout "empty"
 	   Devise::RegistrationsController.layout "empty"
 	end
-
+  # generators
 	config.generators do |g|
 	   g.orm             :active_record
        g.template_engine :erb
