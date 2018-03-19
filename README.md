@@ -24,7 +24,7 @@ Things you may want to cover:
 * ...
 # admin-paas
 
-rails generate scaffold Todos account:references name:string number:integer date:date datetime:datetime price:decimal float:float description:text hour:time special:timestamp
+rails generate scaffold Todos account:references name:string number:integer date:date datetime:datetime price:decimal float:float description:text hour:time special:timestamp bool:boolean
 
 rake db:rollback
 rails destroy scaffold

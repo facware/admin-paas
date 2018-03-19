@@ -26,11 +26,12 @@ module AdminPaas
 	end
   # generators
 	config.generators do |g|
-	   g.orm             :active_record
+	     g.orm             :active_record
        g.template_engine :erb
-       g.test_framework  :test_unit, fixture: true
+       g.test_framework  :test_unit, fixture: false
        g.stylesheets     false
-  	   g.javascripts     false
+       g.javascripts     false
+       g.scaffold_stylesheet false
     end
   end
 end
