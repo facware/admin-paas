@@ -57,20 +57,37 @@
                                 
                                     <% attributes.each do |attribute| -%>
                                         <% if attribute.field_type == :datetime_select %>
-                                            <div class="form-group">
+                                            <div class="form-group" id="data_1">
                                                 <%%= f.label :<%= attribute.name %>, class: "col-lg-2 control-label" %>
                                                 <div class="col-lg-10">
-                                                    <%%= f.text_field :<%= attribute.name %>, class: "form-control", :placeholder => '<%= attribute.name %>' %>
-                                                    <!-- span class="help-block m-b-none">Example block-level help text here.</span -->
+                                                    <div class="input-group" data-autoclose="true">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>
+                                                        <%%= f.text_field :<%= attribute.name %>, class: "form-control datepicker-normal", :value => Time.now.strftime('%Y-%m-%d %H:%M') %>
+                                                        <!-- span class="help-block m-b-none">Example block-level help text here.</span -->
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <% elsif attribute.field_type == :date_select %>
+                                            <div class="form-group" id="data_1">
+                                                <%%= f.label :<%= attribute.name %>, class: "col-lg-2 control-label" %>
+                                                <div class="col-lg-10">
+                                                    <div class="input-group" data-autoclose="true">
+                                                        <span class="input-group-addon">
+                                                            <i class="fa fa-calendar"></i>
+                                                        </span>
+                                                        <%%= f.text_field :<%= attribute.name %>, class: "form-control datepicker-normal", :value => Time.now.strftime('%Y-%m-%d %H:%M') %>
+                                                        <!-- span class="help-block m-b-none">Example block-level help text here.</span -->
+                                                    </div>
                                                 </div>
                                             </div>
                                         <% elsif attribute.field_type == :time_select %>
-                                            
                                             <div class="form-group">
                                                 <%%= f.label :<%= attribute.name %>, class: "col-lg-2 control-label" %>
                                                 <div class="col-lg-10">
                                                     <div class="input-group clockpicker" data-autoclose="true">
-                                                        <%%= f.text_field :<%= attribute.name %>, class: "form-control", :value => '<%%= Time.now.strftime('%H:%M') %>' %>
+                                                        <%%= f.text_field :<%= attribute.name %>, class: "form-control", :value => Time.now.strftime('%H:%M') %>
                                                         <!-- span class="help-block m-b-none">Example block-level help text here.</span -->
                                                         <span class="input-group-addon">
                                                             <span class="fa fa-clock-o"></span>
@@ -104,6 +121,38 @@
     <script type="text/javascript">
     $(function() {
         $('.clockpicker').clockpicker();
+
+        $('.datepicker-normal').datepicker({
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            calendarWeeks: true,
+            autoclose: true
+        });
+
+        $('.datepicker-year-view').datepicker({
+            startView: 1,
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true
+        });
+
+        $('.datepicker-decade-view').datepicker({
+            startView: 2,
+            todayBtn: "linked",
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true
+        });
+
+        $('.datepicker-month-view').datepicker({
+            minViewMode: 1,
+            keyboardNavigation: false,
+            forceParse: false,
+            autoclose: true,
+            todayHighlight: true
+        });
     });
     </script>
 <%% end %>
