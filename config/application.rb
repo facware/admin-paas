@@ -16,22 +16,22 @@ module AdminPaas
     # -- all .rb files in that directory are automatically loaded.
 
     config.to_prepare do
-	#  Devise::SessionsController.layout "empty"
-	#  Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "empty" }
-	#  Devise::ConfirmationsController.layout "empty"
-	#  Devise::UnlocksController.layout "empty"            
-	   Devise::PasswordsController.layout proc{ |controller| account_signed_in? ? "application" : "empty" }        
-	   Devise::SessionsController.layout "empty"
-	   Devise::RegistrationsController.layout "empty"
-	end
-  # generators
-	config.generators do |g|
-	     g.orm             :active_record
-       g.template_engine :erb
-       g.test_framework  :test_unit, fixture: false
-       g.stylesheets     false
-       g.javascripts     false
-       g.scaffold_stylesheet false
+    #  Devise::SessionsController.layout "empty"
+    #  Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "empty" }
+    #  Devise::ConfirmationsController.layout "empty"
+    #  Devise::UnlocksController.layout "empty"            
+      Devise::PasswordsController.layout proc{ |controller| account_signed_in? ? "application" : "empty" }        
+      Devise::SessionsController.layout "empty"
+      Devise::RegistrationsController.layout "empty"
     end
+  # generators
+	#config.generators do |g|
+	#     g.orm             :active_record
+  #     g.template_engine :erb
+  #     g.test_framework  :test_unit, fixture: false
+  #     g.stylesheets     false
+  #     g.javascripts     false
+  #     g.scaffold_stylesheet false
+  #  end
   end
 end

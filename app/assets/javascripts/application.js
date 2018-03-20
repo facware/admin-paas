@@ -15,5 +15,6 @@
 //= require metisMenu/jquery.metisMenu.js
 //= require pace/pace.min.js
 //= require slimscroll/jquery.slimscroll.min.js
+//= require bootstrap/clockpicker
 //= require_tree .
 //= require jquery_ujs

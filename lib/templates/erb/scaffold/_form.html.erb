@@ -1,0 +1,109 @@
+<div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-lg-10">
+            <h2>new <%= singular_table_name  %></h2>
+            <ol class="breadcrumb">
+                <li>
+                    <%= "<%= link_to 'Home', panel_path %%>" %>
+                </li>
+                <li>
+                    <%= "<%= link_to '#{plural_table_name}', #{plural_table_name}_path %%>" %>
+                </li>
+                <li class="active">
+                    <strong>new <%= singular_table_name  %></strong>
+                </li>
+            </ol>
+        </div>
+    </div>
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-lg-12">
+                    <div class="ibox float-e-margins">
+                            <div class="ibox-title">
+                                <h5>new <%= singular_table_name  %></h5>
+                                <div class="ibox-tools">
+                                    <a class="collapse-link">
+                                        <i class="fa fa-chevron-up"></i>
+                                    </a>
+                                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                        <i class="fa fa-wrench"></i>
+                                    </a>
+                                    <ul class="dropdown-menu dropdown-user">
+                                        <li><a href="#">Config option 1</a>
+                                        </li>
+                                        <li><a href="#">Config option 2</a>
+                                        </li>
+                                    </ul>
+                                    <a class="close-link">
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="ibox-content">
+                                
+                                <%%= form_for(@<%= singular_table_name %>, html: { class: "form-horizontal", role: "form" }) do |f| %>
+                                    <p>new <%= singular_table_name  %> description</p>
+
+                                    <%% if @<%= singular_table_name %>.errors.any? %>
+                                        <div class="alert alert-danger alert-dismissable" role="alert">
+                                            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
+                                            <h4><%%= pluralize(@<%= singular_table_name %>.errors.count, "error") %> prohibited this <%= singular_table_name %> from being saved:</h4>
+                                            <ul>
+                                                <%% @<%= singular_table_name %>.errors.full_messages.each do |message| %>
+                                                <li><%%= message %></li>
+                                                <%% end %>
+                                            </ul>
+                                        </div>
+                                    <%% end %>
+                                
+                                    <% attributes.each do |attribute| -%>
+                                        <% if attribute.field_type == :datetime_select %>
+                                            <div class="form-group">
+                                                <%%= f.label :<%= attribute.name %>, class: "col-lg-2 control-label" %>
+                                                <div class="col-lg-10">
+                                                    <%%= f.text_field :<%= attribute.name %>, class: "form-control", :placeholder => '<%= attribute.name %>' %>
+                                                    <!-- span class="help-block m-b-none">Example block-level help text here.</span -->
+                                                </div>
+                                            </div>
+                                        <% elsif attribute.field_type == :time_select %>
+                                            
+                                            <div class="form-group">
+                                                <%%= f.label :<%= attribute.name %>, class: "col-lg-2 control-label" %>
+                                                <div class="col-lg-10">
+                                                    <div class="input-group clockpicker" data-autoclose="true">
+                                                        <%%= f.text_field :<%= attribute.name %>, class: "form-control", :value => '<%%= Time.now.strftime('%H:%M') %>' %>
+                                                        <!-- span class="help-block m-b-none">Example block-level help text here.</span -->
+                                                        <span class="input-group-addon">
+                                                            <span class="fa fa-clock-o"></span>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        <% else %>
+                                            <div class="form-group">
+                                                <%%= f.label :<%= attribute.name %>, class: "col-lg-2 control-label" %>
+                                                <div class="col-lg-10">
+                                                    <%%= f.<%= attribute.field_type %> :<%= attribute.name %>, class: "form-control", :placeholder => '<%= attribute.name %>' %>
+                                                    <!-- span class="help-block m-b-none">Example block-level help text here.</span -->
+                                                </div>
+                                            </div>
+                                        <% end %>
+                                    <% end -%>
+                                    <div class="form-group">
+                                        <div class="col-lg-offset-2 col-lg-10">
+                                                <%%= f.submit class: "btn btn-sm btn-primary pull-right m-t-n-xs" %>
+                                        </div>
+                                    </div>
+                                <%% end %>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+    
+<%% content_for :javascript do %>
+    <script type="text/javascript">
+    $(function() {
+        $('.clockpicker').clockpicker();
+    });
+    </script>
+<%% end %>
