@@ -50,3 +50,11 @@ Some setup you must do manually if you haven't yet:
   4. You can copy Devise views (for customization) to your app by running:
 
        rails g devise:views
+
+
+
+## issues
+
+[Mailer with devise](https://stackoverflow.com/questions/16281254/usermailer-with-devise)
+
+[Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links)
