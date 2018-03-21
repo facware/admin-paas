@@ -18,7 +18,7 @@ module AdminPaas
     config.to_prepare do
 	#  Devise::SessionsController.layout "empty"
 	#  Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "empty" }
-	#  Devise::ConfirmationsController.layout "empty"
+	   Devise::ConfirmationsController.layout "empty"
 	#  Devise::UnlocksController.layout "empty"            
 	   Devise::PasswordsController.layout proc{ |controller| account_signed_in? ? "application" : "empty" }        
 	   Devise::SessionsController.layout "empty"
