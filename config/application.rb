@@ -16,6 +16,7 @@ module AdminPaas
     # -- all .rb files in that directory are automatically loaded.
 
     config.to_prepare do
+<<<<<<< HEAD
     #  Devise::SessionsController.layout "empty"
     #  Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "empty" }
     #  Devise::ConfirmationsController.layout "empty"
@@ -33,5 +34,15 @@ module AdminPaas
   #     g.javascripts     false
   #     g.scaffold_stylesheet false
   #  end
+=======
+	#  Devise::SessionsController.layout "empty"
+	#  Devise::RegistrationsController.layout proc{ |controller| user_signed_in? ? "application" : "empty" }
+	   Devise::ConfirmationsController.layout "empty"
+	#  Devise::UnlocksController.layout "empty"            
+	   Devise::PasswordsController.layout proc{ |controller| account_signed_in? ? "application" : "empty" }        
+	   Devise::SessionsController.layout "empty"
+	   Devise::RegistrationsController.layout "empty"
+	end
+>>>>>>> a69384fb437eab64dacd4582652e6c38daa95825
   end
 end

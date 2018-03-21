@@ -1,0 +1,52 @@
+<% if flash.present? %>
+  <div id='flash'>
+   <script>
+     <% if flash[:success] %>
+       var $toastContent = $('<span><%= flash[:success] %></span>');
+       toastr.success($toastContent)
+     <% end %>
+     <% if flash[:info] %>
+       var $toastContent = $('<span><%= flash[:info] %></span>');
+       toastr.info($toastContent)
+     <% end %>
+     <% if flash[:danger] %>
+       var $toastContent = $('<span><%= flash[:danger] %></span>');
+       toastr.error($toastContent)
+     <% end %>
+
+    toastr.options = {
+        "closeButton": true,
+        "debug": false,
+        "progressBar": true,
+        "positionClass": "toast-top-right",
+        "showDuration": "300",
+        "hideDuration": "1000",
+        "timeOut": "5000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+    };
+   </script>
+  </div>
+
+  <% flash.each do |type, message| %>
+    <% if type == "success" %>
+    <% elsif type == "toast" %>
+        <%= javascript_tag "toastr('#{message}', 4000)" %>
+    <% else %>
+        <%= message.html_safe %>
+    <% end %>
+    <div class="alert alert-<%= type %>">
+        <a href="#" data-dismiss="alert" class="close">×</a>
+        <ul>
+        <li>
+            <%= message %>
+        </li>
+        </ul>
+    </div>
+    <% end %>
+<% end %>
+
+

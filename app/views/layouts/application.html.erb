@@ -50,7 +50,8 @@
             <% if alert %>
               <p class="alert alert-danger"><%= alert %></p>
             <% end %>
-            
+
+            <%= render :partial => 'layouts/flash_messages', :flash => flash %>
             <!-- Main view  -->
             <%= yield %>
 

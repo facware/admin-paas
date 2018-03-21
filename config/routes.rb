@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  devise_for :accounts
+  devise_for :accounts, controllers: { confirmations: 'confirmations' }
   authenticated :accounts do
   	root :to => 'panel#index'
   end	
