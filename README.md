@@ -25,7 +25,7 @@ Things you may want to cover:
 # admin-paas
 
 ## issues
-
+[Flash Toastjs Notices](https://ftovaro.github.io/ruby/rails/bootstrap/notification/flash/toast/alerts/2016/11/19/custom-flash-notifications-with-bootstrap.html)
 [Mailer with devise](https://stackoverflow.com/questions/16281254/usermailer-with-devise)
 
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet#links)
