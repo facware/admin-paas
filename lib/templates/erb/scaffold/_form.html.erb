@@ -44,18 +44,20 @@
                                     <p>new <%= singular_table_name  %> description</p>
 
                                     <%% if @<%= singular_table_name %>.errors.any? %>
-                                        <div class="alert alert-danger alert-dismissable" role="alert">
-                                            <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
-                                            <h4><%%= pluralize(@<%= singular_table_name %>.errors.count, "error") %> prohibited this <%= singular_table_name %> from being saved:</h4>
-                                            <ul>
-                                                <%% @<%= singular_table_name %>.errors.full_messages.each do |message| %>
-                                                <li><%%= message %></li>
-                                                <%% end %>
-                                            </ul>
-                                        </div>
+                                        <%%= render partial: 'layouts/alert_toast', locals: { :model => @<%= singular_table_name %> } %>
+                                        <!--div class="alert alert-danger alert-dismissable" role="alert"-->
+                                            <!--button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button-->
+                                            <!--h4><%%#= pluralize(@<%= singular_table_name %>.errors.count, "error") %> prohibited this <%= singular_table_name %> from being saved:</h4>
+                                            <ul-->
+                                                <%%# @<%= singular_table_name %>.errors.full_messages.each do |message| %>
+                                                <!--li><%%#= message %></li-->
+                                                <%%# end %>
+                                            <!--/ul>
+                                        </div-->
                                     <%% end %>
-                                
-                                    <% attributes.each do |attribute| -%>
+                                        
+                                        <% attributes.each do |attribute| -%>
+                                        
                                         <% if attribute.field_type == :datetime_select %>
                                             <div class="form-group" id="data_1">
                                                 <%%= f.label :<%= attribute.name %>, class: "col-lg-2 control-label" %>
@@ -93,6 +95,13 @@
                                                             <span class="fa fa-clock-o"></span>
                                                         </span>
                                                     </div>
+                                                </div>
+                                            </div>
+                                        <% elsif attribute.field_type == :text_field && attribute.type == :references %>
+                                            <div class="form-group">
+                                                <%%= f.label :<%= attribute.name %>, class: "col-lg-2 control-label" %>
+                                                <div class="col-lg-10">
+                                                    <%%= f.collection_select :<%= "#{attribute.name}_id" %>, <%= attribute.name.camelize %>.order(:name),:id,:name, {prompt: "Select a category"}, {class: "form-control"} %>
                                                 </div>
                                             </div>
                                         <% else %>

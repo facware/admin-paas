@@ -45,13 +45,56 @@
             <%= render 'layouts/topnavbar' %>
             <!-- news -->
             <% if notice %>
-              <p class="alert alert-success"><%= notice %></p>
+            <!-- <%= javascript_tag "toastr.success('Have fun storming the castle!', 'Miracle Max Says')" %> -->
+              <script>
+              toastr.options = {
+                "closeButton": true,
+                "debug": false,
+                "progressBar": true,
+                "preventDuplicates": false,
+                "positionClass": "toast-bottom-right",
+                "onclick": null,
+                "showDuration": "4000",
+                "hideDuration": "1000",
+                "timeOut": "7000",
+                "extendedTimeOut": "1000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+              }
+              toastr.success('<%= notice %>','Notice');
+              </script>
+              <!-- <p class="alert alert-success"><%= notice %></p> -->
             <% end %>
             <% if alert %>
-              <p class="alert alert-danger"><%= alert %></p>
+              <script>
+                toastr.options = {
+                  "closeButton": true,
+                  "debug": false,
+                  "progressBar": true,
+                  "preventDuplicates": false,
+                  "positionClass": "toast-bottom-right",
+                  "onclick": null,
+                  "showDuration": "4000",
+                  "hideDuration": "1000",
+                  "timeOut": "7000",
+                  "extendedTimeOut": "1000",
+                  "showEasing": "swing",
+                  "hideEasing": "linear",
+                  "showMethod": "fadeIn",
+                  "hideMethod": "fadeOut"
+                }
+                toastr.error('<%= alert %>','Alert');
+              </script>
+              <!-- <p class="alert alert-danger"><%= alert %></p> -->
             <% end %>
+            <!-- <% flash.each do |key, value| %>
+            render html: "<script>toastr.warning('Have fun storming the castle!', 'Miracle Max Says');</script>".html_safe
+              <div class="alert alert-<%= key %>"><%= value %></div>
+            <% end %> -->
 
-            <%= render :partial => 'layouts/flash_messages', :flash => flash %>
+            <%#= render 'layouts/flash_messages' %>
             <!-- Main view  -->
             <%= yield %>
 
